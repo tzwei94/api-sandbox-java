@@ -1,7 +1,7 @@
 {
   "info": {
-    "name": "Banking API",
-    "description": "Banking API: select an environment with base_url, token_username and token_password. Run Health, Authentication, then Banking. Get token saves api_token automatically (15-minute lifetime). The default banking sequence restores the starting balance. See postman/README.md.",
+    "name": "API Sandbox (Java)",
+    "description": "API Sandbox (Java): select an environment with base_url, token_username and token_password. Run Health, Authentication, then Banking. Get token saves api_token automatically (15-minute lifetime). The default banking sequence restores the starting balance. See postman/README.md.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "auth": {

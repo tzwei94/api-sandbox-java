@@ -1,11 +1,11 @@
-# Banking API in Postman
+# API Sandbox (Java) in Postman
 
 Import both files with Postman's **Import** action:
 
 - [Banking-API.postman_collection.json](Banking-API.postman_collection.json): banking, authentication, health and user-management requests, with response assertions.
 - [Local.postman_environment.json](Local.postman_environment.json): reusable environment template with empty login credentials and token.
 
-Select **Banking API - local template** as the active environment. Set these values:
+Select **API Sandbox (Java) - local template** as the active environment. Set these values:
 
 | Variable | Value |
 |---|---|
@@ -18,7 +18,7 @@ Select **Banking API - local template** as the active environment. Set these val
 
 ## Local Docker setup
 
-Start the stack using the main repository's [quickstart](https://github.com/tzwei94/banking-platform/blob/main/QUICKSTART.md). Set `base_url` to its assigned HTTP address and copy the startup `TOKEN_USERNAME` / `TOKEN_PASSWORD` into the corresponding Postman environment variables.
+Start the stack using the main repository's [quickstart](https://github.com/tzwei94/api-sandbox-java-workspace/blob/main/QUICKSTART.md). Set `base_url` to its assigned HTTP address and copy the startup `TOKEN_USERNAME` / `TOKEN_PASSWORD` into the corresponding Postman environment variables.
 
 To rediscover the quickstart port without printing credentials, run from the parent repository root:
 

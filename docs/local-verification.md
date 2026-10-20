@@ -31,7 +31,7 @@ Each banking sequence deposits and withdraws the same amount. These checks demon
 
 The script removes its Compose containers and volumes and deletes `local-data/demo.key` on exit. It leaves the extracted `local-data/application.jsonl` for inspection after a successful run. These paths are Git-ignored. Avoid concurrent smoke runs in the same checkout because their local key/log filenames are shared.
 
-The local API uses an assigned loopback HTTP port; deployed smoke uses HTTPS with normal certificate verification. The fixture is temporary and is removed when the script ends; use the parent repository's [quickstart](https://github.com/tzwei94/banking-platform/blob/main/QUICKSTART.md) for a stack that stays available for Postman.
+The local API uses an assigned loopback HTTP port; deployed smoke uses HTTPS with normal certificate verification. The fixture is temporary and is removed when the script ends; use the parent repository's [quickstart](https://github.com/tzwei94/api-sandbox-java-workspace/blob/main/QUICKSTART.md) for a stack that stays available for Postman.
 
 ## CI and release checks
 

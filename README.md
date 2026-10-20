@@ -1,6 +1,6 @@
-# Banking API
+# API Sandbox (Java)
 
-A Spring Boot 4.1.1 application using Java 25, Maven and PostgreSQL. JWT-authenticated users can list their accounts, check balances, deposit and withdraw from accounts they own. The configured administrator manages a directory of users with individual logins.
+A small API sandbox for testing authentication, account operations, CI/CD and deployments. It uses Spring Boot 4.1.1, Java 25, Maven and PostgreSQL. The account operations use synthetic banking-style examples. JWT-authenticated users can list their accounts, check balances, deposit and withdraw from accounts they own. The configured administrator manages a directory of users with individual logins.
 
 ## Run the tests
 
@@ -118,7 +118,7 @@ The non-root image serves HTTP on 8080 without generating certificates. Public H
 
 GitHub Actions starts with [A. Application CI](.github/workflows/app-ci.yml) on every push to `main` and on PRs targeting `main`. It calls separate reusable [lint](.github/workflows/lint.yml), [test](.github/workflows/test.yml), [build/scan](.github/workflows/build-image.yml) and [publish](.github/workflows/publish.yml) workflows. Lint and tests run in parallel. Image building and scanning run on hosted runners; the trusted `banking-app` runner publishes the exact scanned archive to Amazon ECR without rebuilding it. CI stops after saving `image-manifest.json` with the immutable digest. No PR uses the shared Docker host or registry credentials.
 
-The POM starts at `0.1.0-SNAPSHOT`. **B. Prepare Release** opens a reviewed POM-version PR (patch by default, explicit minor/major). Merging it triggers the same main CI. **C. Create Release**, given that successful CI run ID, records its exact image digest in a GitHub Release and opens the next development snapshot PR. Deployment remains a separate workflow in `banking-infrastructure`; creating an app release does not deploy anything. See [CI setup and release guide](docs/ci-cd.md) for variables, GitHub App permissions, run selection and rollback handoff.
+The POM starts at `0.1.0-SNAPSHOT`. **B. Prepare Release** opens a reviewed POM-version PR (patch by default, explicit minor/major). Merging it triggers the same main CI. **C. Create Release**, given that successful CI run ID, records its exact image digest in a GitHub Release and opens the next development snapshot PR. Deployment remains a separate workflow in `api-sandbox-java-infra`; creating an app release does not deploy anything. See [CI setup and release guide](docs/ci-cd.md) for variables, GitHub App permissions, run selection and rollback handoff.
 
 Dependencies, including the OpenTelemetry instrumentation BOM, are pinned; Maven properties contain patch overrides for scanner findings in the Spring Boot managed versions. Refresh those overrides with a tested dependency update, not by disabling the scan. Source SHA and CI run identify each published development build.
 
@@ -171,7 +171,7 @@ less CPU time; unsupported CPU accounting reports zero. Micrometer exposes
 CPU is shared with normal requests despite the dedicated executor and recovery
 gap. Monitor normal latency and ALB health; do not assume latency isolation.
 
-Use the separate `k6/cpu-demo.js` workload in the parent `banking-platform` project, not
+Use the separate `k6/cpu-demo.js` workload in the parent `api-sandbox-java-workspace` project, not
 the mixed banking workload. Its default smoke makes one 50 ms CPU request. The
 optional load profile is capped at 4 CPU requests/sec, 8 total VUs and 5 minutes,
 and distinguishes expected 429 rejections from unexpected errors. Sustained live

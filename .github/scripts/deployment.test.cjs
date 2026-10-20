@@ -26,8 +26,8 @@ test('handoff rejects invalid repository names before generating a shell command
   assert.throws(() => deploymentSummary(manifest, {deploymentRepository: 'bad/repo; echo nope'}), /repository/i);
 });
 
-test('handoff defaults to the banking infrastructure repository owned by the application owner', () => {
-  const summary = deploymentSummary({...manifest, repository: 'example/banking-api'});
-  assert.match(summary, /https:\/\/github.com\/example\/banking-infrastructure\/actions\/workflows\/deploy-dev.yml/);
-  assert.match(summary, /--repo example\/banking-infrastructure/);
+test('handoff defaults to the API sandbox infrastructure repository owned by the application owner', () => {
+  const summary = deploymentSummary({...manifest, repository: 'example/api-sandbox-java'});
+  assert.match(summary, /https:\/\/github.com\/example\/api-sandbox-java-infra\/actions\/workflows\/deploy-dev.yml/);
+  assert.match(summary, /--repo example\/api-sandbox-java-infra/);
 });

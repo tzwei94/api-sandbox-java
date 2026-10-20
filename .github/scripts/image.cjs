@@ -20,7 +20,7 @@ function verifyBuildVersion(properties, version) {
 }
 
 function deploymentSummary(manifest, {deploymentRepository, manifestUrl, serverUrl = 'https://github.com'} = {}) {
-  const repository = deploymentRepository || `${manifest.repository.split('/')[0]}/banking-infrastructure`;
+  const repository = deploymentRepository || `${manifest.repository.split('/')[0]}/api-sandbox-java-infra`;
   if (!/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository)) {
     throw new Error('Invalid deployment repository; use OWNER/REPOSITORY.');
   }

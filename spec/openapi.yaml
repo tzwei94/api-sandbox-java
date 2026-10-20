@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Banking API
+  title: API Sandbox (Java)
   version: 0.1.0
   description: JWT-protected SGD account operations. Liquibase runs separately from the
     serving process. Actuator is isolated on loopback port 9000.

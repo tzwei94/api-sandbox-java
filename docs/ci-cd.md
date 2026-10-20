@@ -47,7 +47,7 @@ Runner access is a separate control from a job's `if` condition: a PR can propos
 | `AWS_BUILD_ROLE_ARN` | OIDC build role with authorization-token access and push permissions scoped to the application ECR repository. |
 | `AWS_REGION` | AWS region containing the private ECR repository. |
 | `IMAGE_REPOSITORY` | Private ECR destination, such as `123456789012.dkr.ecr.ap-southeast-1.amazonaws.com/banking-dev/banking-api`; no scheme or tag. |
-| `DEPLOYMENT_REPOSITORY` | Deployment workflow repository as `OWNER/REPOSITORY`. The setup menu configures it; if unset, summary links use the application owner's `banking-infrastructure` repository. |
+| `DEPLOYMENT_REPOSITORY` | Deployment workflow repository as `OWNER/REPOSITORY`. The setup menu configures it; if unset, summary links use the application owner's `api-sandbox-java-infra` repository. |
 | `RELEASE_APP_ID` | ID of a GitHub App installed on this application repository. |
 
 Store the App's private key as repository secret `RELEASE_APP_PRIVATE_KEY`. Give that App **Contents: read and write**, **Pull requests: read and write**, **Actions: read**, **Workflows: read and write**, and its default metadata access, limited to this repository. Workflows permission lets release creation tag the selected historical commit when its workflow files differ from current main; preparation does not request this permission. The workflows mint short-lived installation tokens. GitHub App tokens are used for PR creation so the resulting PRs trigger normal CI; events from the default `GITHUB_TOKEN` generally do not trigger another workflow. Do not give the App bypass permissions for required review or auto-merge release PRs.
